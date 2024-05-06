@@ -1,0 +1,28 @@
+📝📝📝📝TAREAS PARA IMPLEMENTAR EN EL PROYECTO📝📝📝📝
+
+❌CREACION DE LA ESTRUCTURA DE CARPETAS:
+    MODELS, CONFIG, INIT. SE VIO EN LA CLASE.
+
+❌CREACION DE LA BASE DE DATOS.
+❌MODIFICAR TODOS LOS ENDPOINTS PARA QUE TRABAJEN CON LA BASE DE DATOS.
+❌DEJAR EL MAIN LO MAS LIMPIO POSIBLE.
+
+📍📍📍📍📍LISTA DE REQUERIMIENTOS:📍📍📍📍📍
+❌El proyecto tiene un enpoint para crear un libro y funciona correctamente (no permite crear si no existe la categoriaen la base de datos).
+❌El proyecto tiene un enpoint para Modificar un libro y funciona correctamente (no permite modificar si no existe la categoriaen la base de datos).
+❌El proyecto tiene un enpoint para eliminar un libro y funciona correctamente.
+❌El proyecto tiene un enpoint para consultar todos los libros y funciona correctamente.
+❌El proyecto tiene un enpoint para consultar un libros por medio de su codigo y funciona correctamente.
+❌El proyecto tiene un enpoint para crear una categoria y funciona correctamente.
+❌El proyecto tiene un enpoint para modificar una categoria y funciona correctamente (Si la categoria ya esta asignada a un libro, en este se vera reflejado el cambio).
+❌El proyecto tiene un enpoint para eliminar una categoria y funciona correctamente (Si la categoria ya esta asignada a un libro, este enpoint no debe permitir borrar la categoria).
+❌El proyecto cuenta con la arquitectura trabajada en clase y el main.py esta vacio (solo con importaciones e instancias).
+❌Todos los enpoints tiene seguridad y es necesario un token para poder hacer uso de ellos.
+
+‼️‼️‼️‼️‼️REQUERIMIENTOS OPCIONALES‼️‼️‼️‼️‼️‼️‼️‼️‼️
+❌El proyecto cuenta con un midlleware extrade error_handler.py y jwt_handler.py
+❌El proyecto cuenta con un Endpointpara Login que devuelve un Success o Fail dependiendo de las credenciales.
+
+
+❌
+✅
