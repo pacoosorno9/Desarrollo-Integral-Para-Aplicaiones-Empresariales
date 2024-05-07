@@ -1,14 +1,14 @@
 📝📝📝📝TAREAS PARA IMPLEMENTAR EN EL PROYECTO📝📝📝📝
 
-❌CREACION DE LA ESTRUCTURA DE CARPETAS:
+✅CREACION DE LA ESTRUCTURA DE CARPETAS:
     MODELS, CONFIG, INIT. SE VIO EN LA CLASE.
 
-❌CREACION DE LA BASE DE DATOS.
+✅CREACION DE LA BASE DE DATOS. Libro y categoria
 ❌MODIFICAR TODOS LOS ENDPOINTS PARA QUE TRABAJEN CON LA BASE DE DATOS.
-❌DEJAR EL MAIN LO MAS LIMPIO POSIBLE.
+🤏DEJAR EL MAIN LO MAS LIMPIO POSIBLE.
 
 📍📍📍📍📍LISTA DE REQUERIMIENTOS:📍📍📍📍📍
-❌El proyecto tiene un enpoint para crear un libro y funciona correctamente (no permite crear si no existe la categoriaen la base de datos).
+❌El proyecto tiene un enpoint para crear un libro y funciona correctamente (no permite crear si no existe la categoria en la base de datos).
 ❌El proyecto tiene un enpoint para Modificar un libro y funciona correctamente (no permite modificar si no existe la categoriaen la base de datos).
 ❌El proyecto tiene un enpoint para eliminar un libro y funciona correctamente.
 ❌El proyecto tiene un enpoint para consultar todos los libros y funciona correctamente.
@@ -26,3 +26,4 @@
 
 ❌
 ✅
+🤏
