@@ -53,8 +53,9 @@ class Config:
 def agregarLibros(libro: Libro) -> dict:
     db = Session()
     nuevo_Libro = LibroModel(**libro.dict())
-    for categoria in range(len(CategoriaModel)):
-        if(nuevo_Libro.categoria == categoria.nombreCategoria)
+    for categoria in range(len(categoria)):
+        if(nuevo_Libro.categoria == categoria.nombreCategoria):
+            print("Hola mundo")
     
     db.add(nuevo_Libro)
     db.commit()
