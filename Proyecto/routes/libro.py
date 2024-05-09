@@ -65,13 +65,14 @@ def obtenerTodosLosLibros() -> list:
     return libros
 
 # ENDPOINT PARA OBTENER UN LIBRO POR SU ID
-#@libro_router.get('/libros/{libro_id}', tags=['libros'], response_model=Libro)
-#def obtenerLibroPorId(libro_id: int = Path(..., title="The ID of the libro you want to get")) -> Libro:
-#    db = Session()
- #   libro = db.query(LibroModel).filter(LibroModel.id == libro_id).first()
-  #  if not libro:
-   #     raise HTTPException(status_code=404, detail="Libro not found")
-    #return libro
+@libro_router.get('/categorias/{categoria_id}', tags=["Categorias"])
+def get_CategoriaID (id: int):
+    db = Session()
+    result = db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
+    if not result:
+            return JSONResponse(status_code=404,  content={'message':'No encontrado'})
+    return JSONResponse(status_code=200, content=jsonable_encoder(result))
+
 
 @libro_router.put('/libros/{libro_id}', tags=['libros'], response_model=Libro)
 def actualizarLibro(libro: Libro, libro_id: int = Path(..., title="The ID of the libro you want to update")) -> Libro:
@@ -142,7 +143,7 @@ def update_categoria(id: int, categoria: Categoria):
     return JSONResponse(status_code=200, content={'message':'Se ha modificado la pelicula'})
 
 #mEndpoint para eliminar una categoría
-@libro_router.delete('/categorias/'{id}, tags=('categorias'), response_model=dict(), status_code="200")
+@libro_router.delete('/categorias/{id}', tags=('categorias'), response_model=dict(), status_code="200")
 def delete_categorias (id: int) -> dict:
     db=Session()
     result = db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
