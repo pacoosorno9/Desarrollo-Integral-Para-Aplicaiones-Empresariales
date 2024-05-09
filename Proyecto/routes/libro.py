@@ -7,7 +7,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel, Field
 from models.categoria import Categoria as CategoriaModel
 from models.libro import Libro as LibroModel
-#from config.database import Session
+from config.database import Session
 
 
 
@@ -30,10 +30,16 @@ class Libro(BaseModel):
     categoria: str
     nDePaginas: int
 
-# INGRESO DE DATOS, SE GUARDA PERO AL REINICIAR EL SERVIDOR SE BORRAN LOS DATOS
-#libros = []
-#categorias = []
-#libro_id_counter = 0
+# ENDPOINT PARA AGREGAR LAS CATEGORIAS
+@libro_router.post('/categorias/', tags=['Categorias'], response_model=dict, status_code=201)
+def crear_categorias(categoria: Categoria) -> dict:
+    db = Session()
+    nueva_categoria=CategoriaModel(**categoria.dict())
+    db.add(nueva_categoria)
+    db.commit()
+    return JSONResponse(status_code=201, content={"message": "Categoria Creada"})
+
+
 
 
 #SCHEMA EXTRA DE LIBORS EJEMPLO
@@ -125,13 +131,13 @@ def crear_categorias(categoria: Categoria) -> dict:
 
 
 # # ENDPOINT PARA PODER ACTUALIZAR LAS CATEGORIAS
-# @app.put('/categorias/{id}', tags=['categorias'])
-# def update_categoria(id: int, nueva_categoria: Categoria):
-#     for libro in libros:
-#         if libro.categoria == categorias[id - 1].nombre:
-#             libro.categoria = nueva_categoria.nombre
-#     categorias[id - 1] = nueva_categoria
-#     return categorias
+@app.put('/categorias/{id}', tags=['categorias'])
+def update_categoria(id: int, nueva_categoria: Categoria):
+     for libro in libros:
+         if libro.categoria == categorias[id - 1].nombre:
+             libro.categoria = nueva_categoria.nombre
+     categorias[id - 1] = nueva_categoria
+     return categorias
 
 
 # # ENDPOINT PARA PODER BORRAR LAS CATEGORIAS
