@@ -59,9 +59,10 @@ def crear_categorias(categoria: Categoria) -> dict:
 def agregarLibros(libro: Libro) -> dict:
      db=Session()
      nuevo_Libro = LibroModel(**libro.dict())
+     #if(nuevo_Libro.categoria)
      db.add(nuevo_Libro)
      db.commit()
-     return JSONResponse(status_code=201, content={"message": "Se ha registrado el libro"})
+     return JSONResponse(content={"message": "Se ha registrado el libro"})
 '''
      if (Session.Query())
      if not any(cat.nombre == libro.categoria for cat in categorias):
