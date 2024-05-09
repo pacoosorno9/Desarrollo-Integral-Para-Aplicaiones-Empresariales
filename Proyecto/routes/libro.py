@@ -5,7 +5,8 @@
 from fastapi import Path, Query, Depends, APIRouter, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel, Field
-#from models.categoria import categoria as CategoriaModel
+from models.categoria import Categoria as CategoriaModel
+from models.libro import Libro as LibroModel
 #from config.database import Session
 
 
@@ -16,24 +17,24 @@ from pydantic import BaseModel, Field
 libro_router = APIRouter()
 
 # CREACION DE LA CLASE CATEGORIA
-class Categoria(BaseModel):
+class Categoria(CategoriaModel):
     id: int
     nombre: str
 
-# INGRESO DE DATOS, SE GUARDA PERO AL REINICIAR EL SERVIDOR SE BORRAN LOS DATOS
-libros = []
-categorias = []
-libro_id_counter = 0
-
-
-# CREACION DE LA CLASE LIBROreCON SUS ATRIBUTOS
-class Libro(BaseModel):
+#Creacion de la clase Libro
+class Libro(LibroModel):
     id: int
     titulo: str
     autor: str
     año: int
     categoria: str
     nDePaginas: int
+
+# INGRESO DE DATOS, SE GUARDA PERO AL REINICIAR EL SERVIDOR SE BORRAN LOS DATOS
+#libros = []
+#categorias = []
+#libro_id_counter = 0
+
 
 #SCHEMA EXTRA DE LIBORS EJEMPLO
 class Config:

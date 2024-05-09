@@ -3,11 +3,11 @@
 '''
 #IMPORTACIONES
 from config.database import Base
-from sqlalchemy import Column, Integer, String, Float
+from sqlalchemy import Column, Integer, String
 
 #CREACION DE LA TABLA CATEGORIA CON SUS ATRIBUTOS
 class Categoria (Base):
-    __tablename__ = 'Categorias'
+    __tablename__ = 'categorias'
 
     id = Column(Integer, primary_key=True)
-    nombre = Column(String)
+    nombreCategoria = Column(String)
