@@ -19,7 +19,7 @@ libro_router = APIRouter()
 # CREACION DE LA CLASE CATEGORIA
 class Categoria(BaseModel):
     id: int
-    nombre: str
+    nombreCategoria: str
 
 #Creacion de la clase Libro
 class Libro(BaseModel):
