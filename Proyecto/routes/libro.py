@@ -58,10 +58,10 @@ def agregar_Libros(libro: Libro) -> dict:
     return JSONResponse(content={"message": "Se ha registrado el libro"})
 
 # ENDPOINT PARA OBTENER TODOS LOS LIBROS
-@libro_router.get('/libros', tags=['Libros'], response_model=list)
-def obtener_Todos_Los_Libros() -> list:
+@libro_router.get('/libros', tags=['Libros'], response_model=list[Libro], status_code=200)
+def obtener_Todos_Los_Libros() -> list[Libro]:
     db = Session()
-    libros = db.query(LibroModel).all()
+    result = db.query(LibroModel).all()
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
 # ENDPOINT PARA OBTENER UN LIBRO POR SU ID
