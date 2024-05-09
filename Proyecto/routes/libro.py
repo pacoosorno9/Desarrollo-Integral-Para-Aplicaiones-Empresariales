@@ -102,61 +102,61 @@ def eliminarLibro(libro_id: int = Path(..., title="")) -> dict:
 
 
 
-###########    SECCION DE CATEGORIAS       #################
-# ENDPOINT PARA AGREGAR LAS CATEGORIAS
-@libro_router.post('/categorias', tags=['nombreCategoria'], response_model=dict, status_code=201)
-def crear_categorias(categoria: Categoria) -> dict:
-    db = Session()
-    nueva_categoria = CategoriaModel(**categoria.dict())
-    db.add(nueva_categoria)
-    db.commit()
-    db.refresh(nueva_categoria)
-    return JSONResponse(status_code=201, content={"message": "Categoria Creada"})
+# ###########    SECCION DE CATEGORIAS       #################
+# # ENDPOINT PARA AGREGAR LAS CATEGORIAS
+# @libro_router.post('/categorias', tags=['nombreCategoria'], response_model=dict, status_code=201)
+# def crear_categorias(categoria: Categoria) -> dict:
+#     db = Session()
+#     nueva_categoria = CategoriaModel(**categoria.dict())
+#     db.add(nueva_categoria)
+#     db.commit()
+#     db.refresh(nueva_categoria)
+#     return JSONResponse(status_code=201, content={"message": "Categoria Creada"})
 
-# Endpoint para obtener todas las categorías
-@libro_router.get('/categorias', tags=['categorias'],response_model= List[Categoria], status_code=200)
-def get_computadoras():
-    db = Session()
-    result = db.query(CategoriaModel).all()
-    return JSONResponse(status_code=200, content=jsonable_encoder(result))
+# # Endpoint para obtener todas las categorías
+# @libro_router.get('/categorias', tags=['categorias'],response_model= List[Categoria], status_code=200)
+# def get_computadoras():
+#     db = Session()
+#     result = db.query(CategoriaModel).all()
+#     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
-# Endpoint para obtener una categoría por su ID
-@libro_router.get('/categorias/{categoria_id}', tags=["Categorias"], response_model=Categoria)
-async def get_categoria(categoria_id: int, db: Session = Depends(get_db)):
-    categoria = db.query(CategoriaModel).filter(CategoriaModel.id == categoria_id).first()
-    if not categoria:
-        raise HTTPException(status_code=404, detail='Not Found')
-    return categoria
+# # # Endpoint para obtener una categoría por su ID
+# # @libro_router.get('/categorias/{categoria_id}', tags=["Categorias"], response_model=Categoria)
+# # # async def get_categoria(categoria_id: int, db: Session = Depends(get_db)):
+# #     categoria = db.query(CategoriaModel).filter(CategoriaModel.id == categoria_id).first()
+# #     if not categoria:
+# #         raise HTTPException(status_code=404, detail='Not Found')
+# #     return categoria
 
-# Endpoint para crear una nueva categoría
-@libro_router.post('/categorias', tags=["Categorias"], response_model=Categoria)
-async def create_categoria(categoria: Categoria, db: Session = Depends(get_db)):
-    db_categoria = CategoriaModel(**categoria.dict())
-    db.add(db_categoria)
-    db.commit()
-    db.refresh(db_categoria)
-    return db_categoria
+# # Endpoint para crear una nueva categoría
+# @libro_router.post('/categorias', tags=["Categorias"], response_model=Categoria)
+# async def create_categoria(categoria: Categoria, db: Session = Depends(get_db)):
+#     db_categoria = CategoriaModel(**categoria.dict())
+#     db.add(db_categoria)
+#     db.commit()
+#     db.refresh(db_categoria)
+#     return db_categoria
 
-# Endpoint para actualizar una categoría
-@libro_router.put('/categorias/{categoria_id}', tags=["Categorias"], response_model=Categoria)
-async def update_categoria(categoria_id: int, categoria: Categoria, db: Session = Depends(get_db)):
-    db_categoria = db.query(CategoriaModel).filter(CategoriaModel.id == categoria_id).first()
-    if not db_categoria:
-        raise HTTPException(status_code=404, detail='Not Found')
-    db_categoria.nombre = categoria.nombre
-    db.commit()
-    db.refresh(db_categoria)
-    return db_categoria
+# # Endpoint para actualizar una categoría
+# @libro_router.put('/categorias/{categoria_id}', tags=["Categorias"], response_model=Categoria)
+# async def update_categoria(categoria_id: int, categoria: Categoria, db: Session = Depends(get_db)):
+#     db_categoria = db.query(CategoriaModel).filter(CategoriaModel.id == categoria_id).first()
+#     if not db_categoria:
+#         raise HTTPException(status_code=404, detail='Not Found')
+#     db_categoria.nombre = categoria.nombre
+#     db.commit()
+#     db.refresh(db_categoria)
+#     return db_categoria
 
-# Endpoint para eliminar una categoría
-@libro_router.delete('/categorias/{categoria_id}', tags=["Categorias"])
-async def delete_categoria(categoria_id: int, db: Session = Depends(get_db)):
-    db_categoria = db.query(CategoriaModel).filter(CategoriaModel.id == categoria_id).first()
-    if not db_categoria:
-        raise HTTPException(status_code=404, detail='Not Found')
-    db.delete(db_categoria)
-    db.commit()
-    return {"message": "Categoria deleted successfully"}
+# # Endpoint para eliminar una categoría
+# @libro_router.delete('/categorias/{categoria_id}', tags=["Categorias"])
+# async def delete_categoria(categoria_id: int, db: Session = Depends(get_db)):
+#     db_categoria = db.query(CategoriaModel).filter(CategoriaModel.id == categoria_id).first()
+#     if not db_categoria:
+#         raise HTTPException(status_code=404, detail='Not Found')
+#     db.delete(db_categoria)
+#     db.commit()
+#     return {"message": "Categoria deleted successfully"}
 
 
 
