@@ -17,12 +17,12 @@ from models.libro import Libro as LibroModel
 libro_router = APIRouter()
 
 # CREACION DE LA CLASE CATEGORIA
-class Categoria(CategoriaModel):
+class Categoria(BaseModel):
     id: int
     nombre: str
 
 #Creacion de la clase Libro
-class Libro(LibroModel):
+class Libro(BaseModel):
     id: int
     titulo: str
     autor: str
