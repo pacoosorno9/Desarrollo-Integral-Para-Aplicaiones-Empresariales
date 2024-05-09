@@ -41,6 +41,16 @@ def crear_categorias(categoria: Categoria) -> dict:
     return JSONResponse(status_code=201, content={"message": "Categoria Creada"})
 
 
+# # ENDPOINT PARA AGREGAR LIBROS
+@app.post('/libros', tags=['libros'], response_model=dict, status_code=201)
+def agregarLibros(libro: Libro):
+     if not any(cat.nombre == libro.categoria for cat in categorias):
+         raise HTTPException(status_code=400, detail="La categoría del libro no existe")
+# Calculamos el ID del nuevo libro
+     nuevo_id = len(libros) + 1
+     libro.id = nuevo_id  # Asignamos el nuevo ID al libro
+     libros.append(libro)
+     return libro
 
 
 #SCHEMA EXTRA DE LIBORS EJEMPLO
