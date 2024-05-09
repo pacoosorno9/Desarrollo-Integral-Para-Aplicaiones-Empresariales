@@ -104,14 +104,14 @@ def eliminarLibro(libro_id: int = Path(..., title="")) -> dict:
 
 # ###########    SECCION DE CATEGORIAS       #################
 # # ENDPOINT PARA AGREGAR LAS CATEGORIAS
-# @libro_router.post('/categorias', tags=['nombreCategoria'], response_model=dict, status_code=201)
-# def crear_categorias(categoria: Categoria) -> dict:
-#     db = Session()
-#     nueva_categoria = CategoriaModel(**categoria.dict())
-#     db.add(nueva_categoria)
-#     db.commit()
-#     db.refresh(nueva_categoria)
-#     return JSONResponse(status_code=201, content={"message": "Categoria Creada"})
+@libro_router.post('/categorias', tags=['nombreCategoria'], response_model=dict, status_code=201)
+def crear_categorias(categoria: Categoria) -> dict:
+    db = Session()
+    nueva_categoria=CategoriaModel(**categoria.dict())
+    db.add(nueva_categoria)
+    db.commit()
+    db.refresh(nueva_categoria)
+    return JSONResponse(status_code=201, content={"message": "Categoria Creada"})
 
 # # Endpoint para obtener todas las categorías
 # @libro_router.get('/categorias', tags=['categorias'],response_model= List[Categoria], status_code=200)
@@ -166,15 +166,7 @@ def eliminarLibro(libro_id: int = Path(..., title="")) -> dict:
 
 
 
-# # ENDPOINT PARA AGREGAR LAS CATEGORIAS
-# @libro_router.post('/categorias', tags=['nombreCategoria'], response_model=dict, status_code=201)
-# def crear_categorias(categoria: Categoria) -> dict:
-#     db = Session()
-#     nueva_categoria=CategoriaModel(**categoria.dict())
-#     db.add(nueva_categoria)
-#     db.commit()
-#     db.refresh(nueva_categoria)
-#     return JSONResponse(status_code=201, content={"message": "Categoria Creada"})
+
 
 
 # # # ENDPOINT PARA AGREGAR LIBROS
