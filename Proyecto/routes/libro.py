@@ -128,15 +128,6 @@ def obtenerTodosLosCategorias() -> list:
 # #         raise HTTPException(status_code=404, detail='Not Found')
 # #     return categoria
 
-# # Endpoint para crear una nueva categoría
-# @libro_router.post('/categorias', tags=["Categorias"], response_model=Categoria)
-# async def create_categoria(categoria: Categoria, db: Session = Depends(get_db)):
-#     db_categoria = CategoriaModel(**categoria.dict())
-#     db.add(db_categoria)
-#     db.commit()
-#     db.refresh(db_categoria)
-#     return db_categoria
-
 # # Endpoint para actualizar una categoría
 # @libro_router.put('/categorias/{categoria_id}', tags=["Categorias"], response_model=Categoria)
 # async def update_categoria(categoria_id: int, categoria: Categoria, db: Session = Depends(get_db)):
