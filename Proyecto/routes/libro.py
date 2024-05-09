@@ -53,10 +53,6 @@ class Config:
 def agregarLibros(libro: Libro) -> dict:
     db = Session()
     nuevo_Libro = LibroModel(**libro.dict())
-    for categoria in range(len(categoria)):
-        if(nuevo_Libro.categoria == categoria.nombreCategoria):
-            print("Hola mundo")
-    
     db.add(nuevo_Libro)
     db.commit()
     return JSONResponse(content={"message": "Se ha registrado el libro"})
