@@ -7,13 +7,13 @@ from routes.libro import libro_router
 # # CREACION DE LA INSTANCIA
 app = FastAPI()
 
-# # TITULO DE LA APP
-# app.title = "Proyecto Primer Parcial"
+# TITULO DE LA APP
+app.title = "Proyecto Primer Parcial"
 
 # #INCLUIR LOS DEMAS ARCHIVOS
-# app.include_router(libro_router)
+app.include_router(libro_router)
 
-# Base.metadata.create_all(bind=engine)
+#Base.metadata.create_all(bind=engine)
 
 # ENDPOINT DE PRUEBA
 @app.get('/', tags=['Inicio'])
