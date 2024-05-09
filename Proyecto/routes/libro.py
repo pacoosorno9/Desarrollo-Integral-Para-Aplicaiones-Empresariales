@@ -30,6 +30,19 @@ class Libro(BaseModel):
     categoria: str
     nDePaginas: int
 
+#SCHEMA EXTRA DE LIBORS EJEMPLO
+class Config:
+    schema_extra = {
+        "example":{
+            "id"
+            "titulo": "Harry Potter",
+            "autor": "Marco Polo",
+            "año": "2000",
+            "categoria": "Fantasia",
+            "nDePaginas": "522"
+        }
+    }
+
 # ENDPOINT PARA AGREGAR LAS CATEGORIAS
 @libro_router.post('/categorias', tags=['nombreCategoria'], response_model=dict, status_code=201)
 def crear_categorias(categoria: Categoria) -> dict:
@@ -61,18 +74,7 @@ def agregarLibros(libro: Libro) -> dict:
 '''
 
 
-#SCHEMA EXTRA DE LIBORS EJEMPLO
-class Config:
-    schema_extra = {
-        "example":{
-            "id"
-            "titulo": "Harry Potter",
-            "autor": "Marco Polo",
-            "año": "2000",
-            "categoria": "Fantasia",
-            "nDePaginas": "522"
-        }
-    }
+
 
 '''
 
