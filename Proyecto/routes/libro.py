@@ -50,7 +50,7 @@ class Config:
 
 # ENDPOINT PARA AGREGAR LIBROS
 @libro_router.post('/libros', tags=['Libros'], response_model=dict, status_code=201)
-def agregarLibros(libro: Libro) -> dict:
+def agregar_Libros(libro: Libro) -> dict:
     db = Session()
     nuevo_Libro = LibroModel(**libro.dict())
     db.add(nuevo_Libro)
@@ -59,14 +59,14 @@ def agregarLibros(libro: Libro) -> dict:
 
 # ENDPOINT PARA OBTENER TODOS LOS LIBROS
 @libro_router.get('/libros', tags=['Libros'], response_model=list)
-def obtenerTodosLosLibros() -> list:
+def obtener_Todos_Los_Libros() -> list:
     db = Session()
     libros = db.query(LibroModel).all()
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
 # ENDPOINT PARA OBTENER UN LIBRO POR SU ID
 @libro_router.get('/libros/{id}', tags=["Libros"])
-def get_LibroID (id: int):
+def obetener_Libros_Por_ID (id: int):
     db = Session()
     result = db.query(LibroModel).filter(LibroModel.id == id).first()
     if not result:
@@ -75,7 +75,7 @@ def get_LibroID (id: int):
 
 #ENDPONT PARA ACTUALIZAR LOS LIBROS
 @libro_router.put('/libros/{libro_id}', tags=['Libros'], response_model=Libro)
-def actualizarLibro(libro: Libro, libro_id: int = Path(..., title="The ID of the libro you want to update")) -> Libro:
+def actualizar_Libros(libro: Libro, libro_id: int = Path(..., title="The ID of the libro you want to update")) -> Libro:
     db = Session()
     libro_db = db.query(LibroModel).filter(LibroModel.id == libro_id).first()
     if not libro_db:
@@ -90,7 +90,7 @@ def actualizarLibro(libro: Libro, libro_id: int = Path(..., title="The ID of the
 
 # ENDPOINT PARA ELIMINAR UN LIBRO
 @libro_router.delete('/libros/{libro_id}', tags=['Libros'], response_model=dict)
-def eliminarLibro(libro_id: int = Path(..., title="")) -> dict:
+def eliminar_Libros(libro_id: int = Path(..., title="")) -> dict:
     db = Session()
     libro = db.query(LibroModel).filter(LibroModel.id == libro_id).first()
     if not libro:
@@ -106,7 +106,7 @@ def eliminarLibro(libro_id: int = Path(..., title="")) -> dict:
 # ###########    SECCION DE CATEGORIAS       #################
 # # ENDPOINT PARA AGREGAR LAS CATEGORIAS
 @libro_router.post('/categorias', tags=['Categorias'], response_model=dict, status_code=201)
-def crear_categorias(categoria: Categoria) -> dict:
+def crear_Categorias(categoria: Categoria) -> dict:
     db = Session()
     nueva_categoria=CategoriaModel(**categoria.dict())
     db.add(nueva_categoria)
@@ -116,14 +116,14 @@ def crear_categorias(categoria: Categoria) -> dict:
 
 # # Endpoint para obtener todas las categorías
 @libro_router.get('/categorias', tags=['Categorias'], response_model=list)
-def obtenerTodosLosCategorias() -> list:
+def obtener_Todos_Los_Categorias() -> list:
     db = Session()
     categorias = db.query(CategoriaModel).all()
     return jsonable_encoder(categorias)
 
 # Endpoint para obtener una categoría por su ID
 @libro_router.get('/categorias/{categoria_id}', tags=["Categorias"])
-def get_CategoriaID (id: int):
+def get_Categoria_Por_ID (id: int):
     db = Session()
     result = db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
     if not result:
@@ -132,7 +132,7 @@ def get_CategoriaID (id: int):
 
 #ENDPOINT PARA ACTUALIZAR LAS CATEGORIAS
 @libro_router.put('/categorias/{id}', tags=['Categorias'])
-def update_categoria(id: int, categoria: Categoria):
+def actualizar_Categoria(id: int, categoria: Categoria):
     db=Session()
     result = db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
     if not result:
@@ -145,7 +145,7 @@ def update_categoria(id: int, categoria: Categoria):
 
 #Endpoint para eliminar una categoría
 @libro_router.delete('/categorias/{id}', tags=['Categorias'], response_model=dict(), status_code="200")
-def delete_categorias (id: int) -> dict:
+def eliminar_Categorias (id: int) -> dict:
     db=Session()
     result = db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
     if not result:
