@@ -130,13 +130,15 @@ def get_CategoriaID (id: int):
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
 @libro_router.put('/categorias/{id}', tags=['categorias'])
-def update_categoria(id: int, nombreCategoria: str):
+def update_categoria(id: int, categoria: Categoria):
     db=Session()
-    result = db.query(CategoriaModel).filter(CategoriaModel.id == id).nombreCategoria()
+    result = db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
     if not result:
         return JSONResponse(status_code=404, content={'message':'No encontrado'})
-    result.nombreCategoria= Categoria.nombreCategoria
+    result.id = categoria.id
+    result.nombreCategoria= categoria.nombreCategoria
     db.commit()
+
     return JSONResponse(status_code=200, content={'message':'Se ha modificado la pelicula'})
 
 
