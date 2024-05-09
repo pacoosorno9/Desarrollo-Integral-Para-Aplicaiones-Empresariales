@@ -46,6 +46,7 @@ def crear_categorias(categoria: Categoria) -> dict:
 def agregarLibros(libro: Libro) -> dict:
      db=Session()
      nuevo_Libro = LibroModel(**libro.dict())
+     #if(nuevo_Libro.categoria)
      db.add(nuevo_Libro)
      db.commit()
      return JSONResponse(content={"message": "Se ha registrado el libro"})
