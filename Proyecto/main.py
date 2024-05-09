@@ -4,16 +4,16 @@ from fastapi.responses import HTMLResponse
 from config.database import engine, Base
 from routes.libro import libro_router
 
-# CREACION DE LA INSTANCIA
+# # CREACION DE LA INSTANCIA
 app = FastAPI()
 
-# TITULO DE LA APP
-app.title = "Proyecto Primer Parcial"
+# # TITULO DE LA APP
+# app.title = "Proyecto Primer Parcial"
 
-#INCLUIR LOS DEMAS ARCHIVOS
-app.include_router(libro_router)
+# #INCLUIR LOS DEMAS ARCHIVOS
+# app.include_router(libro_router)
 
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
 
 # ENDPOINT DE PRUEBA
 @app.get('/', tags=['Inicio'])
