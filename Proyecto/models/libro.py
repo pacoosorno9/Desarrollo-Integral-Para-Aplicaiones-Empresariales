@@ -16,3 +16,4 @@ class Libro(Base):
     año = Column(Integer)
     categoria = Column(String, ForeignKey('categorias.nombreCategoria'))
     nDePaginas = Column(Integer)
+    
