@@ -37,6 +37,7 @@ def crear_categorias(categoria: Categoria) -> dict:
     nueva_categoria=CategoriaModel(**categoria.dict())
     db.add(nueva_categoria)
     db.commit()
+    db.refresh(nueva_categoria)
     return JSONResponse(status_code=201, content={"message": "Categoria Creada"})
 
 
