@@ -4,10 +4,10 @@
 #IMPORTACIONES
 from fastapi import Path, Query, Depends, APIRouter, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
-from pydantic import BaseModel, Field
-from models.categoria import categoria as CategoriaModel
-from config.database import Session
-
+#from pydantic import BaseModel, Field
+#from models.categoria import categoria as CategoriaModel
+#from config.database import Session
+'''
 #CREACION DE LA INSTANCIA
 libro_router = ApiRouter()
 
@@ -138,3 +138,4 @@ def crear_categorias(categoria: Categoria) -> dict:
 #         return categoria_borrada
 #     else:
 #         raise HTTPException(status_code=404, detail=f"No se encontró la categoría con ID {id}")
+'''
