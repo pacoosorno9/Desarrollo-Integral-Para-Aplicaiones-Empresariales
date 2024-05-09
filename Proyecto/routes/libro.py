@@ -65,10 +65,10 @@ def obtenerTodosLosLibros() -> list:
     return libros
 
 # ENDPOINT PARA OBTENER UN LIBRO POR SU ID
-@libro_router.get('/categorias/{categoria_id}', tags=["Categorias"])
-def get_CategoriaID (id: int):
+@libro_router.get('/libros/{id}', tags=["libros"])
+def get_LibroID (id: int):
     db = Session()
-    result = db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
+    result = db.query(CategoriaModel).filter(LibroModel.id == id).first()
     if not result:
             return JSONResponse(status_code=404,  content={'message':'No encontrado'})
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
