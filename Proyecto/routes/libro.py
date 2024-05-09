@@ -120,6 +120,16 @@ def obtenerTodosLosCategorias() -> list:
     categorias = db.query(CategoriaModel).all()
     return jsonable_encoder(categorias)
 
+# Endpoint para obtener una categoría por su ID
+@libro_router.get('/categorias/{categoria_id}', tags=["Categorias"])
+def get_CategoriaID (id: int):
+    db = Session()
+    result = db.query(CategoriaModel).filter(CategoriaModel.id == id).first()
+    if not result:
+            return JSONResponse(status_code=404,  content={'message':'No encontrado'})
+    return JSONResponse(status_code=200, content=jsonable_encoder(result))
+
+
 # # # Endpoint para obtener una categoría por su ID
 # # @libro_router.get('/categorias/{categoria_id}', tags=["Categorias"], response_model=Categoria)
 # # # async def get_categoria(categoria_id: int, db: Session = Depends(get_db)):
