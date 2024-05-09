@@ -48,7 +48,6 @@ def agregarLibros(libro: Libro):
      nuevo_Libro = LibroModel(**Libro.model_dump())
      db.add(nuevo_Libro)
      db.commit()
-     Libro.append(Libro)
      return JSONResponse(content={"message": "Se ha registrado el libro"})
 '''
      if (Session.Query())
