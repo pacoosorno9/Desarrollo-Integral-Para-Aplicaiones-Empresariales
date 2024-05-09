@@ -31,7 +31,7 @@ class Libro(BaseModel):
     nDePaginas: int
 
 # ENDPOINT PARA AGREGAR LAS CATEGORIAS
-@libro_router.post('/categorias/', tags=['Categorias'], response_model=dict, status_code=201)
+@libro_router.post('/categorias', tags=['nombreCategoria'], response_model=dict, status_code=201)
 def crear_categorias(categoria: Categoria) -> dict:
     db = Session()
     nueva_categoria=CategoriaModel(**categoria.dict())
