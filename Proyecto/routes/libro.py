@@ -132,7 +132,7 @@ def get_CategoriaID (id: int):
 @libro_router.put('/categorias/{id}', tags=['categorias'])
 def update_categoria(id: int, nombreCategoria: str):
     db=Session()
-    result = db.query(CategoriaModel).filter(CategoriaModel.id == id).all()
+    result = db.query(CategoriaModel).filter(CategoriaModel.id == id).nombreCategoria()
     if not result:
         return JSONResponse(status_code=404, content={'message':'No encontrado'})
     result.nombreCategoria= Categoria.nombreCategoria
