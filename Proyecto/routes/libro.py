@@ -129,6 +129,16 @@ def get_CategoriaID (id: int):
             return JSONResponse(status_code=404,  content={'message':'No encontrado'})
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
+@libro_router.put('/categorias/{id}', tags=['categorias'])
+def update_categoria(id: int, nombreCategoria: str):
+    db=Session()
+    result = db.query(CategoriaModel).filter(CategoriaModel.id == id).all()
+    if not result:
+        return JSONResponse(status_code=404, content={'message':'No encontrado'})
+    result.nombreCategoria= Categoria.nombreCategoria
+    db.commit()
+    return JSONResponse(status_code=200, content={'message':'Se ha modificado la pelicula'})
+
 
 # # # Endpoint para obtener una categoría por su ID
 # # @libro_router.get('/categorias/{categoria_id}', tags=["Categorias"], response_model=Categoria)
