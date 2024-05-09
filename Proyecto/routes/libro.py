@@ -8,6 +8,8 @@ from pydantic import BaseModel, Field
 from models.categoria import Categoria as CategoriaModel
 from models.libro import Libro as LibroModel
 from config.database import Session
+from typing import Coroutine, Optional, List
+from fastapi.encoders import jsonable_encoder
 
 
 
@@ -63,13 +65,13 @@ def obtenerTodosLosLibros() -> list:
     return libros
 
 # ENDPOINT PARA OBTENER UN LIBRO POR SU ID
-@libro_router.get('/libros/{libro_id}', tags=['libros'], response_model=Libro)
-def obtenerLibroPorId(libro_id: int = Path(..., title="The ID of the libro you want to get")) -> Libro:
-    db = Session()
-    libro = db.query(LibroModel).filter(LibroModel.id == libro_id).first()
-    if not libro:
-        raise HTTPException(status_code=404, detail="Libro not found")
-    return libro
+#@libro_router.get('/libros/{libro_id}', tags=['libros'], response_model=Libro)
+#def obtenerLibroPorId(libro_id: int = Path(..., title="The ID of the libro you want to get")) -> Libro:
+#    db = Session()
+ #   libro = db.query(LibroModel).filter(LibroModel.id == libro_id).first()
+  #  if not libro:
+   #     raise HTTPException(status_code=404, detail="Libro not found")
+    #return libro
 
 @libro_router.put('/libros/{libro_id}', tags=['libros'], response_model=Libro)
 def actualizarLibro(libro: Libro, libro_id: int = Path(..., title="The ID of the libro you want to update")) -> Libro:
@@ -112,9 +114,11 @@ def crear_categorias(categoria: Categoria) -> dict:
     return JSONResponse(status_code=201, content={"message": "Categoria Creada"})
 
 # Endpoint para obtener todas las categorías
-@libro_router.get('/categorias', tags=["Categorias"], response_model=list)
-async def get_all_categorias(db: Session = Depends(get_db)):
-    return db.query(CategoriaModel).all()
+@libro_router.get('/categorias', tags=['categorias'],response_model= List[Categoria], status_code=200)
+def get_computadoras():
+    db = Session()
+    result = db.query(CategoriaModel).all()
+    return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
 # Endpoint para obtener una categoría por su ID
 @libro_router.get('/categorias/{categoria_id}', tags=["Categorias"], response_model=Categoria)
