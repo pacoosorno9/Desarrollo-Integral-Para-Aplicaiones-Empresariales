@@ -43,9 +43,9 @@ def crear_categorias(categoria: Categoria) -> dict:
 
 # # ENDPOINT PARA AGREGAR LIBROS
 @libro_router.post('/libros', tags=['libros'], response_model=dict, status_code=201)
-def agregarLibros(libro: Libro):
+def agregarLibros(libro: Libro) -> dict:
      db=Session()
-     nuevo_Libro = LibroModel(**Libro.model_dump())
+     nuevo_Libro = LibroModel(**libro.dict())
      db.add(nuevo_Libro)
      db.commit()
      return JSONResponse(content={"message": "Se ha registrado el libro"})
