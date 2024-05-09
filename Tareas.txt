@@ -23,7 +23,6 @@
 ❌El proyecto cuenta con un midlleware extrade error_handler.py y jwt_handler.py
 ❌El proyecto cuenta con un Endpointpara Login que devuelve un Success o Fail dependiendo de las credenciales.
 
-
 ❌
 ✅
 🤏
