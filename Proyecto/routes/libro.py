@@ -50,7 +50,7 @@ def agregarLibros(libro: Libro):
      db.commit()
      Libro.append(Libro)
      return JSONResponse(content={"message": "Se ha registrado el libro"})
-    '''
+'''
      if (Session.Query())
      if not any(cat.nombre == libro.categoria for cat in categorias):
          raise HTTPException(status_code=400, detail="La categoría del libro no existe")
@@ -59,7 +59,7 @@ def agregarLibros(libro: Libro):
      libro.id = nuevo_id  # Asignamos el nuevo ID al libro
      libros.append(libro)
      return libro
-     '''
+'''
 
 
 #SCHEMA EXTRA DE LIBORS EJEMPLO
