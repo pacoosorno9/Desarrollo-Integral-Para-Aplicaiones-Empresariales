@@ -8,7 +8,6 @@ from pydantic import BaseModel, Field
 #from models.categoria import categoria as CategoriaModel
 #from config.database import Session
 
-routerLibro = APIRouter()
 
 
 
