@@ -4,12 +4,17 @@
 #IMPORTACIONES
 from fastapi import Path, Query, Depends, APIRouter, HTTPException
 from fastapi.responses import HTMLResponse, JSONResponse
-#from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field
 #from models.categoria import categoria as CategoriaModel
 #from config.database import Session
-'''
+
+routerLibro = APIRouter()
+
+
+
+
 #CREACION DE LA INSTANCIA
-libro_router = ApiRouter()
+libro_router = APIRouter()
 
 # CREACION DE LA CLASE CATEGORIA
 class Categoria(BaseModel):
@@ -43,6 +48,8 @@ class Config:
             "nDePaginas": "522"
         }
     }
+
+'''
 
 # # ENDPOINT PARA AGREGAR LIBROS
 # @app.post('/libros/', tags=['libros'])
