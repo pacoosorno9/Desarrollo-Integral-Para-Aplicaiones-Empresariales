@@ -30,7 +30,7 @@ class Libro(BaseModel):
     categoria: str
     nDePaginas: int
 
-#SCHEMA EXTRA DE LIBORS EJEMPLO
+#SCHEMA EXTRA DE LIBROS EJEMPLO
 class Config:
     schema_extra = {
         "example":{
