@@ -114,11 +114,11 @@ def crear_categorias(categoria: Categoria) -> dict:
     return JSONResponse(status_code=201, content={"message": "Categoria Creada"})
 
 # # Endpoint para obtener todas las categorías
-# @libro_router.get('/categorias', tags=['categorias'],response_model= List[Categoria], status_code=200)
-# def get_computadoras():
-#     db = Session()
-#     result = db.query(CategoriaModel).all()
-#     return JSONResponse(status_code=200, content=jsonable_encoder(result))
+@libro_router.get('/categorias', tags=['categirias'], response_model=list)
+def obtenerTodosLosCategorias() -> list:
+    db = Session()
+    libros = db.query(LibroModel).all()
+    return Categoria
 
 # # # Endpoint para obtener una categoría por su ID
 # # @libro_router.get('/categorias/{categoria_id}', tags=["Categorias"], response_model=Categoria)
