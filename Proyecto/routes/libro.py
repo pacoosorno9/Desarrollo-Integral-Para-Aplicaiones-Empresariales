@@ -11,10 +11,6 @@ from config.database import Session
 from typing import Coroutine, Optional, List
 from fastapi.encoders import jsonable_encoder
 
-
-
-
-
 #CREACION DE LA INSTANCIA
 libro_router = APIRouter()
 
@@ -44,7 +40,6 @@ class Config:
             "nDePaginas": "522"
         }
     }
-
 
 ###########    SECCION DE LIBROS       #################
 
@@ -99,8 +94,6 @@ def eliminar_Libros(libro_id: int = Path(..., title="")) -> dict:
     db.delete(libro)
     db.commit()
     return {"message": "Libro deleted successfully"}
-
-
 
 
 # ###########    SECCION DE CATEGORIAS       #################
